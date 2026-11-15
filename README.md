@@ -8,26 +8,14 @@ Projeto desenvolvido no âmbito da Prova de Aptidão Profissional (PAP) do Curso
 Este projeto consistiu no desenvolvimento de um equipamento multifuncional de bancada que integra uma Fonte de Alimentação regulável e uma Estação de Soldadura com controlo térmico. O sistema foi projetado para permitir o controlo rigoroso da temperatura da ponta de soldadura através de 3 patamares predefinidos, interface com botões e visualização num display digital de 4 dígitos em tempo real.
 
 ## 💡 Principais Funcionalidades
-- **Estação de Soldadura de Controlo Térmico:** Sistema inteligente com seleção rápida de 3 patamares predefinidos de temperatura adaptados a diferentes trabalhos de soldadura.
-- **Interface de Utilizador:** Display digital de 4 dígitos e botões táteis para navegação e ajuste dinâmico da temperatura.
+- **Dois Modos de Operação:**
+  - **Modo Automático:** Seleção rápida entre 3 patamares predefinidos de temperatura (Standby, Soldadura Standard e Alta Temperatura).
+  - **Modo Manual:** Ajuste livre e incremental da temperatura através de botões dedicados (`+` e `-`).
+- **Interface de Utilizador:** Display digital de 4 dígitos e botões táteis para navegação e feedback acústico por buzzer.
 - **Módulo de Alimentação de Bancada:** Fornecimento de energia estável e regulado com display indicador de tensão.
-- **Controlo por Microcontrolador:** Arquitetura baseada em Arduino para processamento de sinais, leitura de temperatura e modulação de potência.
+- **Controlo por Microcontrolador:** Arquitetura baseada em Arduino para processamento de sinais, leitura de temperatura e modulação PWM de potência.
 - **Montagem Física:** Construção tradicional em placa perfurada de alta fiabilidade, alojada numa caixa protetora transparente em acrílico personalizada.
-
-## 📊 Diagrama de Blocos do Sistema
-+-----------------------+       +-------------------------+       +----------------------+
-|   Alimentação AC/DC   | ----> |   Controlador Arduino   | ----> |   Etapa de Potência  |
-|  (Transformador +     |       |  (Leitura Temp + Botões |       |   (MOSFET IRFZ44N +  |
-|   Retificação/Filtro) |       |   + 3 Patamares)        |       |    Ferro de Soldar)  |
-+-----------------------+       +-------------------------+       +----------------------+
-|
-v
-+-------------------------+
-|    Interface Visual     |
-|   (Display 4 Dígitos)   |
-+-------------------------+
-
-
+  
 ## 🛠️ Lista de Materiais (BOM) & Componentes
 O circuito foi inteiramente montado em placa perfurada, utilizando os seguintes componentes principais:
 - **Controlador:** Microcontrolador compatível com Arduino (Uno / Mega).
@@ -40,19 +28,23 @@ O circuito foi inteiramente montado em placa perfurada, utilizando os seguintes 
 ## 🖼️ Galeria de Imagens do Projeto
 
 ### Unidade de Controlo e Fonte de Alimentação
-*(Fonte de alimentação regulável montada na caixa em acrílico transparente)*
-![Fonte de Alimentação Montada](./images/fonte-alimentacao-montada.jpg)
+<img width="3024" height="4032" alt="Photo 14-12-2020, 10 05 54" src="https://github.com/user-attachments/assets/42d2fee0-7945-4eed-aed5-b9f55e8a5e16" />
+
 
 ### Componentes e Hardware Utilizados
-*(Exemplo dos MOSFETs IRFZ44N, condensadores de filtragem e componentes semicondutores)*
-![Componentes Eletrónicos](./images/componentes.jpg)
+<img width="4592" height="3056" alt="DSC01843" src="https://github.com/user-attachments/assets/ceb27c5d-45e0-4d3f-bbaf-76762421f289" />
+<img width="4592" height="3056" alt="DSC01850" src="https://github.com/user-attachments/assets/87077f9c-4709-4fd7-8f05-f086a4aea728" />
+<img width="4592" height="3056" alt="DSC01836" src="https://github.com/user-attachments/assets/94e7ed4d-3c18-476f-bfd3-9da43963dc88" />
+<img width="4592" height="3056" alt="DSC01854" src="https://github.com/user-attachments/assets/bf6839db-a2e9-4150-a1ab-50dbc920a2cb" />
+<img width="4592" height="3056" alt="DSC01865" src="https://github.com/user-attachments/assets/2f84ce44-9f99-465f-a6ff-7dbce29b5147" />
+
 
 ### Conjunto do Ferro de Soldar
-*(Detalhe do interior do punho e elemento de aquecimento/sensor integrado)*
-![Ferro de Soldar Interno](./images/ferro-soldar.jpg)
+<img width="4592" height="3056" alt="DSC01876" src="https://github.com/user-attachments/assets/ada7bd70-ccc3-47e4-9cf3-db4a084fa2cc" />
+
 
 ## 📂 Organização do Repositório
-- `/firmware` - Código fonte em C++/Arduino.
+- `/firmware` - Código fonte em C++/Arduino (`estacao_soldadura.ino`).
 - `/hardware` - Esquemas elétricos e diagramas de ligações.
 - `/images` - Fotografias do protótipo final e dos componentes reais.
 
