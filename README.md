@@ -1,52 +1,85 @@
-# Estação de Soldadura Inteligente e Fonte de Alimentação (PAP)
+# Estação de Soldadura Inteligente e Fonte de Alimentação
 
-Projeto desenvolvido no âmbito da Prova de Aptidão Profissional (PAP) do Curso Profissional de Técnico de Eletrónica e Telecomunicações da Escola Profissional de Aveiro (EPA), obtendo a classificação final de 20 valores.
+Projeto desenvolvido no âmbito da Prova de Aptidão Profissional (PAP) do Curso Profissional de Técnico de Eletrónica e Telecomunicações da Escola Profissional de Aveiro. A PAP obteve a classificação final de 20 valores.
 
----
+## Problema
 
-## 🚀 Resumo do Projeto
-Este projeto consistiu no desenvolvimento de um equipamento multifuncional de bancada que integra uma Fonte de Alimentação regulável e uma Estação de Soldadura com controlo térmico. O sistema foi projetado para permitir o controlo rigoroso da temperatura da ponta de soldadura através de 3 patamares predefinidos, interface com botões e visualização num display digital de 4 dígitos em tempo real.
+O projeto procurou reunir num único equipamento de bancada duas funções úteis para trabalhos de eletrónica: uma estação de soldadura com controlo de temperatura e uma fonte de alimentação regulável.
 
-## 💡 Principais Funcionalidades
-- **Dois Modos de Operação:**
-  - **Modo Automático:** Seleção rápida entre 3 patamares predefinidos de temperatura (Standby, Soldadura Standard e Alta Temperatura).
-  - **Modo Manual:** Ajuste livre e incremental da temperatura através de botões dedicados (`+` e `-`).
-- **Interface de Utilizador:** Display digital de 4 dígitos e botões táteis para navegação e feedback acústico por buzzer.
-- **Módulo de Alimentação de Bancada:** Fornecimento de energia estável e regulado com display indicador de tensão.
-- **Controlo por Microcontrolador:** Arquitetura baseada em Arduino para processamento de sinais, leitura de temperatura e modulação PWM de potência.
-- **Montagem Física:** Construção tradicional em placa perfurada de alta fiabilidade, alojada numa caixa protetora transparente em acrílico personalizada.
-  
-## 🛠️ Lista de Materiais (BOM) & Componentes
-O circuito foi inteiramente montado em placa perfurada, utilizando os seguintes componentes principais:
-- **Controlador:** Microcontrolador compatível com Arduino (Uno / Mega).
-- **Potência e Comutação:** Transístores MOSFET N-Channel IRFZ44N para o controlo PWM do elemento de aquecimento do ferro de soldar.
-- **Filtragem de Alimentação:** Condensadores eletrolíticos de 1000µF 35V.
-- **Conetividade:** Bornes de aperto de parafuso (terminais de placa azuis).
-- **Interface Visual e Sonora:** Display digital de 4 dígitos, botões táteis e buzzer piezoelétrico para feedback acústico.
-- **Processamento e Sinal:** Díodos de comutação/retificação e transístores de sinal TO-92.
+A necessidade identificada foi desenvolver um solução de uma estação de soldadura robusta, viável e prática a baixo custo, e perceber a tecnologia envolvida no processo de aquecimento dos ferros de soldar.
 
-## 🖼️ Galeria de Imagens do Projeto
+## Requisitos e limitações
 
-### Unidade de Controlo e Fonte de Alimentação
-<img width="3024" height="4032" alt="Photo 14-12-2020, 10 05 54" src="https://github.com/user-attachments/assets/42d2fee0-7945-4eed-aed5-b9f55e8a5e16" />
+O equipamento foi concebido para incluir:
 
+- Controlo da temperatura do ferro de soldar, com três patamares predefinidos e ajuste manual.
+- Interface local com botões, display digital e sinalização visual de temperatura.
+- Fonte de alimentação regulável com indicação da tensão.
+- Controlo eletrónico do aquecimento através de um microcontrolador e modulação PWM.
+- Montagem do circuito da estação numa placa perfurada e integração numa caixa de metal. E montagem da PCB e do circuito da fonte de alimentação regulável numa caixa acrílica.
 
-### Componentes e Hardware Utilizados
-<img width="4592" height="3056" alt="DSC01843" src="https://github.com/user-attachments/assets/ceb27c5d-45e0-4d3f-bbaf-76762421f289" />
-<img width="4592" height="3056" alt="DSC01850" src="https://github.com/user-attachments/assets/87077f9c-4709-4fd7-8f05-f086a4aea728" />
-<img width="4592" height="3056" alt="DSC01836" src="https://github.com/user-attachments/assets/94e7ed4d-3c18-476f-bfd3-9da43963dc88" />
-<img width="4592" height="3056" alt="DSC01854" src="https://github.com/user-attachments/assets/bf6839db-a2e9-4150-a1ab-50dbc920a2cb" />
-<img width="4592" height="3056" alt="DSC01865" src="https://github.com/user-attachments/assets/2f84ce44-9f99-465f-a6ff-7dbce29b5147" />
+Os valores de funcionamento e as limitações do projeto foram:
 
+- Temperaturas dos três patamares: 120ºC, 240ºC e 320ºC, sendo este facilmente parametrizados para outros valores.
+- Intervalo e resolução do ajuste manual: 0,1ºC.
+- Intervalo de tensão e corrente máxima da fonte: 24,5 VDC.
+- Orçamento, dimensões ou outras limitações: 35€ por unidade.
 
-### Conjunto do Ferro de Soldar
-<img width="4592" height="3056" alt="DSC01876" src="https://github.com/user-attachments/assets/ada7bd70-ccc3-47e4-9cf3-db4a084fa2cc" />
+## Abordagem
 
+O sistema foi organizado em dois módulos principais: a estação de soldadura e a fonte de alimentação.
 
-## 📂 Organização do Repositório
-- `/firmware` - Código fonte em C++/Arduino (`estacao_soldadura.ino`).
-- `/hardware` - Esquemas elétricos e diagramas de ligações.
-- `/images` - Fotografias do protótipo final e dos componentes reais.
+Na estação de soldadura, um microcontrolador Arduino processa os comandos dos botões, apresenta informação no display e controla a potência aplicada ao elemento de aquecimento por PWM. A comutação é realizada com MOSFETs de canal N IRFZ44N.
 
----
-*Autor: Gonçalo Figueira*
+A interface permite selecionar entre dois modos de operação:
+
+- **Automático:** seleção de três patamares de temperatura — Standby, Soldadura Standard e Alta Temperatura.
+- **Manual:** ajuste incremental da temperatura através de botões dedicados.
+
+A fonte de alimentação fornece uma saída regulável e apresenta a tensão num segmento de 4 digitos. Os circuitos foram montados em placa perfurada e instalados numa caixa de metal personalizada, no caso da estação. E a PCB numa caixa acrílica.
+
+## Dificuldades e decisões
+
+Durante o desenvolvimento, tive dificuldade com a parametrização da temperatura, uma vez que nem sempre a temperatura do ferro correspondia à temperatura exibida no display.
+
+Uma decisão técnica relevante foi separar a alimentação da estação de soldadura da fonte de alimentação, em dois módulos distintos.
+
+## Resultado
+
+Foi construído um protótipo funcional que integra uma estação de soldadura com controlo de temperatura e uma fonte de alimentação regulável. A PAP obteve a classificação final de 20 valores.
+
+Os valores medidos durante os testes foram:
+
+- Temperatura mínima e máxima verificadas: 30ºC - 360ºC.
+- Intervalo de tensão da fonte: 3V - 24,5V.
+- Outros testes realizados: O modo standby, verificou-se funcional.
+
+## Aprendizagem e melhorias futuras
+
+O projeto permitiu aplicar conhecimentos de eletrónica, controlo por microcontrolador, comutação de potência, interface com o utilizador e montagem de circuitos. Também envolveu a integração dos módulos numa estrutura física em acrílico.
+
+Numa próxima versão, acrescentaria proteção contra sobrecorrente, melhoraria a precisão da temperatura e usaria uma placa de circuito impresso.
+
+## Componentes principais
+
+- Microcontrolador Arduino Mega.
+- MOSFETs de canal N IRFZ44N.
+- Condensadores eletrolíticos de 1000 µF e 35 V.
+- Display digital de quatro dígitos.
+- Botões táteis e buzzer piezoelétrico.
+- Díodos de comutação.
+- Díodos de retificação.
+- Transístores de sinal.
+- Bornes de ligação por parafuso.
+- Placa perfurada.
+- Entre outros.
+
+## Organização do repositório
+
+- `firmware/` — código-fonte C++/Arduino (`estacao_soldadura.ino`).
+- `hardware/` — esquemas elétricos e diagramas de ligações.
+- `images/` — fotografias do protótipo e dos componentes.
+
+## Autor
+
+Gonçalo Figueira
