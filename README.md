@@ -2,6 +2,10 @@
 
 Projeto desenvolvido no âmbito da Prova de Aptidão Profissional (PAP) do Curso Profissional de Técnico de Eletrónica e Telecomunicações da Escola Profissional de Aveiro. A PAP obteve a classificação final de 20 valores.
 
+<img width="9248" height="6944" alt="IMG_20240111_215224" src="https://github.com/user-attachments/assets/d9bd9e53-2307-49a1-9fa4-662d022ac7b8" />
+<img width="4592" height="3056" alt="DSC01877" src="https://github.com/user-attachments/assets/3b8a458f-4d92-4b33-b434-ea6eae0e272e" />
+
+
 ## Problema
 
 O projeto procurou reunir num único equipamento de bancada duas funções úteis para trabalhos de eletrónica: uma estação de soldadura com controlo de temperatura e uma fonte de alimentação regulável.
